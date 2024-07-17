@@ -1,11 +1,11 @@
-#include<stdio.h>      /*±ê×¼ÊäÈëÊä³ö¶¨Òå*/  
-#include<stdlib.h>     /*±ê×¼º¯Êı¿â¶¨Òå*/  
-#include<unistd.h>     /*Unix ±ê×¼º¯Êı¶¨Òå*/  
+#include<stdio.h>      /*æ ‡å‡†è¾“å…¥è¾“å‡ºå®šä¹‰*/  
+#include<stdlib.h>     /*æ ‡å‡†å‡½æ•°åº“å®šä¹‰*/  
+#include<unistd.h>     /*Unix æ ‡å‡†å‡½æ•°å®šä¹‰*/  
 #include<sys/types.h>   
 #include<sys/stat.h>     
-#include<fcntl.h>      /*ÎÄ¼ş¿ØÖÆ¶¨Òå*/  
-#include<termios.h>    /*PPSIX ÖÕ¶Ë¿ØÖÆ¶¨Òå*/  
-#include<errno.h>      /*´íÎóºÅ¶¨Òå*/  
+#include<fcntl.h>      /*æ–‡ä»¶æ§åˆ¶å®šä¹‰*/  
+#include<termios.h>    /*PPSIX ç»ˆç«¯æ§åˆ¶å®šä¹‰*/  
+#include<errno.h>      /*é”™è¯¯å·å®šä¹‰*/  
 #include<string.h>  
 #include <time.h>
 #include <pthread.h>
@@ -36,7 +36,7 @@ void* post_process(void* param)
 	int sock = *((int*)param);
 	
 	con_req.msg_type = PACKET_TYPE_CONN_REQ;
-	con_req.device_id = "15689926008";
+	con_req.device_id = "";
 	con_req.key = "f015fadb62bd4341a2fb233ab9b02b9b";
 	con_req.ver = "V1.0";
 	packet = packet_msg(&con_req);
@@ -55,7 +55,7 @@ void* post_process(void* param)
 	while(1){
 		if(is_auth_ok){
 			if(tick == 30){
-				//Êı¾İÀàĞÍÎª1£¨JSON¸ñÊ½1×Ö·û´®£©
+				//æ•°æ®ç±»å‹ä¸º1ï¼ˆJSONæ ¼å¼1å­—ç¬¦ä¸²ï¼‰
 				post_req.msg_type = PACKET_TYPE_POST_DATA;
 				post_req.msg_id++;
 				post_req.data_type = 1;
@@ -72,7 +72,7 @@ void* post_process(void* param)
 					send_flag = 1;
 				}
 			}else if(tick == 60){
-				//Êı¾İÀàĞÍÎª2£¨JSON¸ñÊ½2×Ö·û´®£©
+				//æ•°æ®ç±»å‹ä¸º2ï¼ˆJSONæ ¼å¼2å­—ç¬¦ä¸²ï¼‰
 				post_req.msg_type = PACKET_TYPE_POST_DATA;
 				post_req.msg_id++;
 				post_req.data_type = 2;
@@ -89,7 +89,7 @@ void* post_process(void* param)
 					send_flag = 1;
 				}
 			}else if(tick == 90){
-				//Êı¾İÀàĞÍÎª3£¨JSON¸ñÊ½3×Ö·û´®£©
+				//æ•°æ®ç±»å‹ä¸º3ï¼ˆJSONæ ¼å¼3å­—ç¬¦ä¸²ï¼‰
 				post_req.msg_type = PACKET_TYPE_POST_DATA;
 				post_req.msg_id++;
 				post_req.data_type = 3;
